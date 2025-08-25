@@ -126,8 +126,19 @@ public class RedesController {
 			String linha = buffer.readLine();
 
 			while (linha != null) {
-					
-					linha = buffer.readLine();
+				if (linha.contains("IPv4")) {
+					String trimmedLine = linha.trim();
+					String[] currentLine = trimmedLine.split(":");
+					System.out.println("Endereco IP: " + currentLine[1]);
+
+				}
+				
+				if (linha.contains(", M")) {
+					String trimmedLine = linha.trim();
+					String[] currentLine = trimmedLine.split(" = ");
+					System.out.println("Tempo medio PING: " + currentLine[3]);
+				}
+				linha = buffer.readLine();
 			}
 			
 			buffer.close();
